@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 option(ENABLE_SQLCIPHER_TESTS "enable sqlchipher test")
 
 # Creates the file compile_commands.json in the build directory.
@@ -11,8 +11,8 @@ include("cmake/HunterGate.cmake")
 include("cmake/Catch.cmake")
 
 HunterGate(
-    URL "https://github.com/cpp-pm/hunter/archive/v0.24.15.tar.gz"
-    SHA1 "8010d63d5ae611c564889d5fe12d3cb7a45703ac"
+    URL "https://github.com/cpp-pm/hunter/archive/v0.26.1.tar.gz"
+    SHA1 "e41ac7a18c49b35ebac99ff2b5244317b2638a65"
 )
 
 project(SqliteModernCpp)
