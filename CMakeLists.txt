@@ -1,21 +1,11 @@
 cmake_minimum_required(VERSION 3.15)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-
 set(SUBDIR_NAME sqlite_modern_cpp)
 
-#add_compile_options(-w)
+add_library(${SUBDIR_NAME} STATIC hdr/sqlite_modern_cpp.h)
 
-#set_source_files_properties(hdr PROPERTIES COMPILE_FLAGS "-w")
+set_target_properties(${SUBDIR_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+target_include_directories(${SUBDIR_NAME} PUBLIC hdr)
 
-add_library(${SUBDIR_NAME} INTERFACE hdr/sqlite_modern_cpp.h)
-
-#set_target_properties(${SUBDIR_NAME} PROPERTIES COMPILE_FLAGS -w)
-#get_target_property(OPTIONS_TO_PRINT ${SUBDIR_NAME} COMPILE_FLAGS)
-#message(STATUS "Options: ${OPTIONS_TO_PRINT}")
-#target_compile_options(${SUBDIR_NAME} INTERFACE -w)
-#set_target_properties(${SUBDIR_NAME} PROPERTIES COMPILE_OPTIONS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
-target_include_directories(${SUBDIR_NAME} INTERFACE hdr)
-
-find_package(SQLite3 REQUIRED MODULE)
-target_link_libraries(${SUBDIR_NAME} INTERFACE sqlite3)
+find_package(SQLite3 REQUIRED MODULE) # Checking if sqlite3 exists
+target_link_libraries(${SUBDIR_NAME} PUBLIC sqlite3)
